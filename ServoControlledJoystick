@@ -1,0 +1,49 @@
+#include <Servo.h>
+int SRVPIN=4;
+int SRVPOS;
+float ANGLE1;
+float ANGLE2; //Can cancel this if no Servo2
+int XPIN=A0;
+int YPIN=A1;
+int SWITCH=2;
+int XVAL;
+int YVAL;
+int SWVAL;
+int DT=500;
+Servo MYSERVOX;
+Servo MYSERVOY; //Only need this is another Servo2
+
+void setup(){
+  Serial.begin(9600);
+  pinMode(XPIN,INPUT);
+  pinMode(YPIN,INPUT);
+  pinMode(SWITCH,INPUT); //Reading from switch, even tho Digital
+  MYSERVOX.attach(SRVPIN);
+  MYSERVOY.attach(SRVPIN2); //Only need this if another Servo2
+  pinMode(SRVPIN,OUTPUT);
+}
+
+void loop(){
+  digitalWrite(SWITCH,HIGH);
+  XVAL=analogRead(XPIN);
+  YVAL=analogRead(YPIN);
+  SWVAL=digitalRead(SWITCH);
+  SRVPOS=digitalRead(SRVPIN);
+  ANGLE1=(160./1023.)*XVAL;
+  ANGLE2=(160./1023.)*YVAL; //Can cancel this if no Servo2
+  
+  Serial.print("X = ");
+  Serial.print(XVAL);
+  Serial.print(" Y = ");
+  Serial.print(YVAL);
+  Serial.print(" Switch State = ");
+  Serial.println(SWVAL);
+  Serial.print("Angle1 = ");
+  Serial.println(ANGLE1);
+  Serial.print("Angel2 = "); //Can cancel this if no Servo2
+  Serial.println(ANGLE2); //Can cancel this if no Servo2
+  delay(DT);
+
+  MYSERVOX.write(ANGLE1);
+  //If another Servo, could do MYSERVOY.write(ANGLE2);
+}
