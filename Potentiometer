@@ -1,0 +1,14 @@
+int READVOLT=A0; //Measure voltage from this pin
+int READVAL;
+float VOLTOUT;
+int DELAYTIME=500;
+
+void setup(){
+pinMode(READVOLT,INPUT);
+Serial.begin(9600);}
+
+void loop(){
+READVAL=analogRead(READVOLT);
+VOLTOUT=(5./1023.)*READVAL; //Reading analog voltage is 0 - 1023, need to convert it.
+Serial.println(VOLTOUT);
+delay(DELAYTIME);}
