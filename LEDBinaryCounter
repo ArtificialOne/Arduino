@@ -1,0 +1,38 @@
+int PIN2=2;
+int PIN3=3;
+int PIN4=4;
+int PIN5=5;
+int PIN6=6;
+int WAITTIME=1000;
+
+void setup (){
+pinMode(PIN2, output);
+pinMode(PIN3, output);
+pinMode(PIN4, output);
+pinMode(PIN5, output);
+pinMode(PIN6,output);
+delay(WAITTIME);
+}
+
+void loop (){
+digitalWrite(PIN6, LOW);
+digitalWrite(PIN2, LOW);
+digitalWrite(PIN3, LOW);
+digitalWrite(PIN4, LOW);
+digitalWrite(PIN5, LOW);
+delay(WAITTIME);
+
+digitalWrite(PIN6, LOW);
+digitalWrite(PIN2, LOW);
+digitalWrite(PIN3, LOW);
+digitalWrite(PIN4, LOW);
+digitalWrite(PIN5, HIGH);
+delay(WAITTIME);
+
+digitalWrite(PIN6, LOW);
+digitalWrite(PIN2, LOW);
+digitalWrite(PIN3, LOW);
+digitalWrite(PIN4, HIGH);
+digitalWrite(PIN5, LOW);
+delay(WAITTIME);
+}
